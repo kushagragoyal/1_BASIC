@@ -60,3 +60,15 @@ items[2].style.backgroundColor = 'green'
 for (var i=0;i<items.length;i++){                             //ITERATING THROUGH EVERY ELEMENT OF ARRAY AND
     items[i].style.fontWeight = 'bold'                        //STYLING EVERY ELEMENT TO BOLD
 }
+
+//getElementsByTagName
+var li = document.getElementsByTagName('li')                  //SELECTING li (Multiple elements)
+console.log(li)
+li[2].textContent = 'Hi'                                      //CHANGEING STYLE AND TEXT
+li[2].style.fontWeight = 'bold'
+li[2].style.backgroundColor = 'green'
+
+for (var i=0;i<li.length;i++){                  //HERE WE ARE ITERATING THROUGH TAG INSTEAD OF CLASS, THEREFORE
+    li[i].style.fontWeight = 'bold'             //THIS BOLD STYLE WILL BE ADDED TO 5th ELE. OF LIST ALSO, IF WE
+}                                               //WOULD HAVE USED CLASS HERE THEN THE BOLD STYLE WOULDN'T BE  
+                                                //APPLIED AS 5th ELE. AS 5th BELONGS TO LI TAG BUT NOT TO CLASS
