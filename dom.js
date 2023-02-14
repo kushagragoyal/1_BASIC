@@ -72,3 +72,41 @@ for (var i=0;i<li.length;i++){                  //HERE WE ARE ITERATING THROUGH 
     li[i].style.fontWeight = 'bold'             //THIS BOLD STYLE WILL BE ADDED TO 5th ELE. OF LIST ALSO, IF WE
 }                                               //WOULD HAVE USED CLASS HERE THEN THE BOLD STYLE WOULDN'T BE  
                                                 //APPLIED AS 5th ELE. AS 5th BELONGS TO LI TAG BUT NOT TO CLASS
+//QUERY SELECTOR
+var hd = document.querySelector('#main-header') //TO SELECT(ID,CLASS,TAG)WE USE(#,.,Normally) IN QUERY   
+hd.style.borderBottom = 'solid 4px blue'                  
+
+var ip = document.querySelector('input')        //THEIR ARE 2 INPUTS IN WEB PAGE, BUT QUERY SELECTOR CAN ONLY
+ip.value = 'hello'                              //SELECT 1 ELEMENT, HENCE IT ALWAYS SELECT 1st ELEMENT.
+
+var submit = document.querySelector('input[type="submit"]') //HERE, BY MENTIONING THE TYPE OF INPUT, WE ARE 
+submit.value = 'send'                                       //SELECTING THE 2nd INPUT
+
+var item = document.querySelector('.list-group-item')       //HERE, SINCE WE HAVE NOT MENTIONED WHICH ELEMENT TO 
+item.style.color = 'brown'                                  //SELECT, HENCE IT WILL SELECT 1st ELEMENT OF LIST
+
+var seconditem = document.querySelector                     
+('.list-group-item:nth-child(2)')                           //HERE, WE ARE SELECTING 2nd ELEMENT OF LIST
+seconditem.style.backgroundColor = 'green'
+
+var thirditem = document.querySelector                     
+('.list-group-item:nth-child(3)')                           //HERE, WE ARE SELECTING 3rd ELEMENT OF LIST
+thirditem.style.visibility = 'hidden'
+
+//QUERY SELECTOR ALL
+var titles = document.querySelectorAll('.title')  //THEIR ARE 2 TITELS IN WEB PAGE THROUGH QURERYSELECTORALL
+console.log(titles)                               //WE CAN SELECT BOTH AT ONCE
+
+var odd = document.querySelectorAll
+('li:nth-child(odd)')                             //SELECTING ALL THE ODD ELEMENTS OF LIST AT ONCE
+
+for(var i=0;i<odd.length;i++){                 
+    odd[i].style.backgroundColor = 'green' 
+}                                                 //STYLING ALL THE ODD ELEMENTS AS GREEN
+
+var sec = document.querySelectorAll
+('li:nth-child(2)')
+
+for (var i=0;i<1;i++){
+    sec[i].style.color = 'green'
+}
