@@ -105,8 +105,81 @@ for(var i=0;i<odd.length;i++){
 }                                                 //STYLING ALL THE ODD ELEMENTS AS GREEN
 
 var sec = document.querySelectorAll
-('li:nth-child(2)')
+('li:nth-child(2)')                               //SELECTING THE 2nd ELEMENT OF LIST
 
 for (var i=0;i<1;i++){
     sec[i].style.color = 'green'
 }
+
+//TRAVERSING IN DOM
+var itemList = document.querySelector("#items")
+
+    //PARENT NODE
+console.log(itemList.parentNode)                  //ACCESSING PARENT NODE OF #items WHICH IS DIV 
+itemList.parentNode.style.backgroundColor = 'red' //USING PARENT NODE AS SELECTOR & CHANGEING THE BG COLOR,HERE
+                                                  //PARENT OF #items IS DIV, THEREFORE DIV BG COLOR WLL CHANGE
+console.log(itemList.parentNode.parentNode)       //PARENT OF #items IS DIV, AND PARENT OF DIV IS DIV,HENCE O/P
+                                                  //WILL BE DIV, WE CAN ADD PARENT LIKE THIS AS MUCH AS WE WANT
+    //PARENT ELEMENT                                 
+console.log(itemList.parentElement)               //PARENT NODE AND ELEMENT ARE EXACTLY SAME AND CAN BE USED 
+                                                  //INTERCHANGEBLY
+
+    //CHILD NODE
+console.log(itemList.childNodes)                  //RETURNS CHILD OF #items, WHICH WILL BE LIST OF ITEMS, IN
+                                                  //FORM OF ARRAY, BUT THIS ARRAY WILL ALSO CONTAIN TEXT AS ELE.
+                                                  //AS IT CONSIDERS WHITE SPACE AS TEXT ELEMENT.
+    //CHILDREN
+console.log(itemList.children)                    //IT WILL ALSO RETURN #items CHILD, AND IT WON'T CONSIDER TEXT 
+                                                  //AS ELEMENT, SO CONFUSION CAN AVOIDED AND IT'S BETTER TO USE
+console.log(itemList.children[1]);                //SELECTING A PERTICULAR CHILD FROM ITEM LIST AND STYLEING
+itemList.children[1].style.backgroundColor='blue' //IT'S BACKGROUND COLOR TO BLUE   
+
+    //firstChild                                  //firstChild, lastChild, previousSibling and nextSibling ALSO 
+    //lastChild                                   //HAVE SAME PROBLEM JUST AS CHILD NODE,SO INSTEAD OF RETURNING  
+    //nextSibling                                 //1st, LAST, NEXT, PREVIOUS ELEMENT IT WILL RETURN TEXT SPACE
+    //previousSibling                             //MOST OF THE TIME.
+
+    //firstElementChild                           
+console.log(itemList.firstElementChild)           //TO AVOID firstChild WE USE firstelementChild, IT WILL RETURN 
+itemList.firstElementChild.textContent = 'H1'     //1st CHILD,HERE WE ARE CHANGEING THE VALUE OF 1ST CHILD TO H1
+    
+    //lastElementChild
+console.log(itemList.lastElementChild)           //TO AVOID lastChild WE USE lastElementChild, IT WILL RETURN
+itemList.lastElementChild.textContent = 'H5'     //LAST CHILD,HERE WE ARE CHAGEING THE VALUE OF LAST CHILD TO H5 
+
+    //nextElementSibling
+console.log(itemList.nextElementSibling)        //TO AVOID nextSibling WE USE nextElementSibling, IT WILL RETURN
+                                                //NEXT SIBLING ELEMENT, HERE SINCE IT HAS NO NEXT SIBLING, HENCE 
+                                                //IT'S SHOWING NULL
+     //PreviousElementSibling
+console.log(itemList.previousElementSibling)    //TO AVOID previousSibling WE USE previousElementSibling,IT WILL
+                                                //RETURN PREVIOUS SIBLING ELEMENT
+//CREATING ELEMENT
+var newDiv = document.createElement('div')      //CREATING A NEW ELEMENT (DIV HERE)
+newDiv.className = 'hello'                      //GIVING CLASS NAME TO THAT CREATED ELEMENT
+newDiv.id = 'hello1'                            //GIVING ID TO THAT CREATED ELEMENT
+newDiv.setAttribute('title','Hello Div')        //GIVING ATTRIBUTE TO THAT ELEMENT('attri. name','attri. value')
+
+var newDivText = document.createTextNode
+('HELLO WORLD')                                 //HERE WE ARE CREATING A TEXT NODE, AND THEN THIS TEXT NODE WILL 
+                                                //BE ADDED IN CREATED ELEMENT
+
+newDiv.appendChild(newDivText)                  //NOW THAT CREATED TEXT NODE IS ADDED TO CREATED ELEMENT
+
+var c = document.querySelector('.container')    
+var h1 = document.querySelector('h1')
+
+c.insertBefore(newDiv,h1)                       //TILL NOW, ELE. HAS BEEN CREATED BUT NOT ADDED IN WEB PAGE, FOR
+                                                //ADDING 1ST WE HAVE TO SELECT PLACE WHERE WE WANT THAT ELEMENT
+                                                //TO GET ADD, HERE NEW ELE. WILL BE ADDED IN CONTAINER(c) AND IT
+                                                //WILL BE ADDED BEFORE H1 (NOW HELLO WORLD, WILL BE VISISBLE IN 
+                                                //WEB PAGE)
+
+console.log(newDiv)                             //THIS WILL DISPLAY THE ELEMENT IN CONSOLE WHICH WE HAVE CREATED
+
+var newDiv1 = document.createElement('div')                 //CREATING NEW DIV
+var newDiv1Text = document.createTextNode('HELLO WORLD')    //CREATING TEXT NODE 
+newDiv1.appendChild(newDiv1Text)                            //ADDING TEXT NODE IN CREATED DIV
+var i = document.querySelector('#items')                       
+var l = document.querySelector('.list-group-item')
+i.insertBefore(newDiv1,l)                                   //HERE WE ARE ADDING HELLO WORLD BEFORE LIST 
