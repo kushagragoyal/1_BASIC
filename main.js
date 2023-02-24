@@ -15,4 +15,9 @@ function addUser(e){                                            //DEFINEING AddU
     let user_serialized = JSON.stringify(user)                  //IN LOCAL STORAGE ONLY STRINGS CAN BE STORED,
                                                                 //HENCE WE ARE CONVERTING OBJECT TO STRING
     localStorage.setItem('user',user_serialized)                //STORING THE CONVERTED STRING IN LOCAL STORAGE
+
+    var ul = document.getElementById('list-main')
+    ul.innerHTML = ul.innerHTML + `<li>${nameInput} - ${emailInput}</li>`
+    console.log(ul)
+    
 }
