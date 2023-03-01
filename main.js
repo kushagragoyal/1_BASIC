@@ -11,17 +11,17 @@ function addUser(e){                                         //DEFINEING AddUser
         name : nameInput,                                    //AND EMAIL OF USER
         Email : emailInput}
 
-    let user_serialized = JSON.stringify(user)              //IN LOCAL STORAGE ONLY STRINGS CAN BE STORED,HENCE
-                                                            //WE ARE CONVERTING OBJECT TO STRING
-    
+    let user_serialized = JSON.stringify(user)               //IN LOCAL STORAGE ONLY STRINGS CAN BE STORED,HENCE
+                                                             //WE ARE CONVERTING OBJECT TO STRING
+
     localStorage.setItem('user'+emailInput,user_serialized) //STORING DATA IN LOCAL STORAGE AND DEFINEING KEY AS 
                                                             //USER+emailInput,TO MAKE KEY DIFF. FOR EVERY CASE                       
-                                                           
+
     var ParEle = document.getElementById('list-main')       //CALLING UL BY IT'S ID AND STROING IT IN ParEle 
-    
+
     var chiEle = document.createElement('li')               //CREATING LI ELEMENT AND STORING IT IN ChiElel
     chiEle.textContent = nameInput +' - '+ emailInput       //STROING Name AND EmailInput AS TEXT IN ChiEle
-    
+
     var Del = document.createElement('button')              //CREATING DELETE BUTTON
     Del.classList.add('btn')                                //ADDING CLASS btn TO DELETE BUTTON
     Del.appendChild(document.createTextNode('Delete'))      //GIVING DELETE TEXT TO DELETE BUTTON
@@ -29,10 +29,36 @@ function addUser(e){                                         //DEFINEING AddUser
     Del.addEventListener('click',deleteUser)                //CALLING DeleteUser FUNC. WHEN USER CLICK ON DELETE
 
     function deleteUser(e){                                 //CREATING deleteUser FUNCTION
-        e.preventDefault()                                  
-        localStorage.removeItem('user'+emailInput)          //REMOVING ELEMENT FROM LOCAL STORAGE USING KEY
-        ParEle.removeChild(chiEle)                          //REMOVING LI ELEMENT FROM LI-LIST OF WEB PAGE        
-        }
+    e.preventDefault()                                  
+    localStorage.removeItem('user'+emailInput)              //REMOVING ELEMENT FROM LOCAL STORAGE USING KEY
+    ParEle.removeChild(chiEle)                              //REMOVING LI ELEMENT FROM LI-LIST OF WEB PAGE        
+    }
+    
     chiEle.appendChild(Del)                                 //ADDING DELETE BUTTON TO chiEle
     ParEle.appendChild(chiEle)                              //ADDING LI ELEMENT TO LI-LIST
+
+    var Edit = document.createElement('button')             //CREATING EDIT BUTTON
+    Edit.classList.add('btn')                               //ADDING CLASS btn TO EDIT BUTTON
+    Edit.appendChild(document.createTextNode('Edit'))       //GIVING EDIT TEXT TO EDIT BUTTON
+
+    Edit.addEventListener('click',EditUser)                 //CALLING EditUser FUNC. WHEN USER CLICK ON EDIT
+
+    function EditUser(e){                                   //CREATING EditUser FUNCTION
+        e.preventDefault()   
+        
+        nameValue = document.getElementById('name').value
+        emailValue = document.getElementById('email').value
+        document.getElementById('name').textContent = nameValue
+        document.getElementById('email').textContent = emailValue
+        
+        localStorage.removeItem('user'+emailInput)          //REMOVING ELEMENT FROM LOCAL STORAGE USING KEY
+        ParEle.removeChild(chiEle)                          //REMOVING LI ELEMENT FROM LI-LIST OF WEB PAGE 
+        
+        
+        }
+    chiEle.appendChild(Edit)                                //ADDING EDIT BUTTON TO chiEle
+    ParEle.appendChild(chiEle)                              //ADDING LI ELEMENT TO LI-LIST
+
+    
 }
+
