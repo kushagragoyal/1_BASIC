@@ -14,14 +14,7 @@ function addUser(e){                                         //DEFINEING AddUser
     let user_serialized = JSON.stringify(user)              //IN LOCAL STORAGE ONLY STRINGS CAN BE STORED,HENCE
                                                             //WE ARE CONVERTING OBJECT TO STRING
     
-    axios.post("https://crudcrud.com/api/b793bb3c04dd47329209eddcf4c2e843/AppointmentData", user)
-        .then((response) => {
-                console.log(response)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-    //localStorage.setItem('user'+emailInput,user_serialized) //STORING DATA IN LOCAL STORAGE AND DEFINEING KEY AS 
+    localStorage.setItem('user'+emailInput,user_serialized) //STORING DATA IN LOCAL STORAGE AND DEFINEING KEY AS 
                                                             //USER+emailInput,TO MAKE KEY DIFF. FOR EVERY CASE                       
 
     var ParEle = document.getElementById('list-main')       //CALLING UL BY IT'S ID AND STROING IT IN ParEle 
